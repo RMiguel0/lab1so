@@ -3,9 +3,33 @@
 #include <future>
 #include <fstream>
 
+// poner el sudo apt install unzip en el readme
+
+
 using namespace std;
 
 namespace fs = std::filesystem;
+
+void exe(const fs::path& file){
+    std::cout << "[Programas]" << file.filename() << "\n";
+}
+
+void sys(const fs::path& file){
+    std::cout << "[Drivers]" << file.filename() << "\n";
+}
+
+void dll(const fs::path& file){
+    std::cout << "[Dynamic link-library]" << file.filename() << "\n";
+}
+
+void pista(const fs::path& file){
+    std::cout << "[Pista]" << file.filename() << "\n";
+}
+
+void trash(const fs::path& file){
+    std::cout << "[Basura]" << file.filename() << "\n";
+}
+
 
 // función que procesa un archivo
 void procesarArchivo(const fs::path& file) {
@@ -17,17 +41,16 @@ void procesarArchivo(const fs::path& file) {
                                istreambuf_iterator<char>());
         in.close();
 
-        // ejemplo de clasificación simple según contenido
-        if (contenido.find("DRIVER") != string::npos)
-            cout << "[Drivers] " << file.filename() << "\n";
-        else if (contenido.find("PROGRAM") != string::npos)
-            cout << "[Programs] " << file.filename() << "\n";
-        else if (contenido.find("DLL") != string::npos)
-            cout << "[DLL] " << file.filename() << "\n";
-        else if (contenido.find("TRACK") != string::npos)
-            cout << "[Pistas] " << file.filename() << "\n";
+        if (contenido.find(".exe") != string::npos)
+            exe(file);
+        else if (contenido.find(".sys") != string::npos)
+            sys(file);
+        else if (contenido.find(".dll") != string::npos)
+            dll(file);
+        else if (contenido.find("tipo: log") != string::npos)
+            pista(file);
         else
-            cout << "[Basura] " << file.filename() << "\n";
+            trash(file);
 
     } catch (exception& e) {
         cerr << "Error procesando " << file << ": " << e.what() << "\n";
