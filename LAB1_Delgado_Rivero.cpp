@@ -10,8 +10,20 @@ using namespace std;
 
 namespace fs = std::filesystem;
 
+int drivers = 0;
+int programas = 0;
+int link_library = 0;
+
 void exe(const fs::path& file){
+    programas++;
+    fs::path carpeta = "Output/System/Programs";
+    string nuevo_nombre = "pista" + to_string(programas) + ".exe";
+    fs::path destino = carpeta / nuevo_nombre;
+    rename(file,destino);
+    return;
+
     std::cout << "[Programas]" << file.filename() << "\n";
+
 }
 
 void sys(const fs::path& file){
