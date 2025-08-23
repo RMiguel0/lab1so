@@ -4,8 +4,8 @@ LABORATORIO 1
 IMPORTANTE SOBRE PAQUETES USADOS
 --------------------------------------------------------------------
 - Requerido:  
-            * make (necesario para ejecutar el makefile).
-            * unzip (necesario para descomprimir la carpeta).
+* make (necesario para ejecutar el makefile).
+* unzip (necesario para descomprimir la carpeta).
 --------------------------------------------------------------------
 AMBIENTE DE EJECUCION USADO
 --------------------------------------------------------------------

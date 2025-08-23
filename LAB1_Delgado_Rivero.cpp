@@ -3,9 +3,6 @@
 #include <future>
 #include <fstream>
 
-// poner el sudo apt install unzip en el readme
-
-
 using namespace std;
 
 namespace fs = std::filesystem;
