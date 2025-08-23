@@ -17,17 +17,19 @@ int link_library = 0;
 void exe(const fs::path& file){
     programas++;
     fs::path carpeta = "Output/System/Programs";
-    string nuevo_nombre = "pista" + to_string(programas) + ".exe";
+    string nuevo_nombre = "programa" + to_string(programas) + ".exe";
     fs::path destino = carpeta / nuevo_nombre;
     rename(file,destino);
     return;
-
-    std::cout << "[Programas]" << file.filename() << "\n";
-
 }
 
 void sys(const fs::path& file){
-    std::cout << "[Drivers]" << file.filename() << "\n";
+    drivers++;
+    fs::path carpeta = "Output/System/Drivers";
+    string nuevo_nombre = "drivers" + to_string(drivers) + ".sys";
+    fs::path destino = carpeta / nuevo_nombre;
+    rename(file,destino);
+    return;
 }
 
 void dll(const fs::path& file){
@@ -66,7 +68,7 @@ void procesarArchivo(const fs::path& file) {
 
     } catch (exception& e) {
         cerr << "Error procesando " << file << ": " << e.what() << "\n";
-    } 
+    }
 }
 
 int main() {
