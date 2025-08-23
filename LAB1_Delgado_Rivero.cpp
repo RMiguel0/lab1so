@@ -40,7 +40,7 @@ void dll(const fs::path& file){
 void pista(const fs::path& file){
     pistas++;
     fs::path carpeta = "Output/Pistas";
-    string nuevo_nombre = "pista" + to_string(pista_counter) + ".txt";
+    string nuevo_nombre = "pista" + to_string(pistas) + ".txt";
     fs::path destino = carpeta / nuevo_nombre;
     rename(file,destino);
     return;
