@@ -13,6 +13,7 @@ namespace fs = std::filesystem;
 int drivers = 0;
 int programas = 0;
 int link_library = 0;
+int pistas = 0;
 
 void exe(const fs::path& file){
     programas++;
@@ -35,11 +36,20 @@ void dll(const fs::path& file){
 }
 
 void pista(const fs::path& file){
-    std::cout << "[Pista]" << file.filename() << "\n";
+    pistas++;
+    fs::path carpeta = "Output/Pistas";
+    string nuevo_nombre = "pista" + to_string(pista_counter) + ".txt";
+    fs::path destino = carpeta / nuevo_nombre;
+    rename(file,destino);
+    return;
 }
 
 void trash(const fs::path& file){
-    std::cout << "[Basura]" << file.filename() << "\n";
+    fs::path carpeta = "Output/Basura";
+    string nuevo_nombre = "basura.txt";
+    fs::path destino = carpeta / nuevo_nombre;
+    rename(file,destino);
+    return;
 }
 
 
