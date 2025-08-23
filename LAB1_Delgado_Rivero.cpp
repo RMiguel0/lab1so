@@ -34,7 +34,11 @@ void sys(const fs::path& file){
 }
 
 void dll(const fs::path& file){
-    std::cout << "[Dynamic link-library]" << file.filename() << "\n";
+    link_library++;
+    fs::path carpeta = "Output/System/Dynamic Link-Library";
+    string nuevo_nombre = "dynamic link-library" + to_string(link_library) + ".dll";
+    fs::path destino = carpeta / nuevo_nombre;
+    rename(file,destino);
 }
 
 void pista(const fs::path& file){
