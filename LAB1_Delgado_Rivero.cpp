@@ -54,7 +54,7 @@ void procesarArchivo(const fs::path& file) {
 
     } catch (exception& e) {
         cerr << "Error procesando " << file << ": " << e.what() << "\n";
-    }
+    } 
 }
 
 int main() {
