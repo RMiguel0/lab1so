@@ -14,6 +14,7 @@ int drivers = 0;
 int programas = 0;
 int link_library = 0;
 int pistas = 0;
+int basura = 0;
 
 void exe(const fs::path& file){
     programas++;
@@ -51,15 +52,15 @@ void pista(const fs::path& file){
 }
 
 void trash(const fs::path& file){
+    basura++;
     fs::path carpeta = "Output/Basura";
-    string nuevo_nombre = "basura.txt";
+    string nuevo_nombre = "basura" + to_string(basura) + ".txt";
     fs::path destino = carpeta / nuevo_nombre;
     rename(file,destino);
     return;
 }
 
 
-// función que procesa un archivo
 void procesarArchivo(const fs::path& file) {
     try {
         ifstream in(file, ios::in | ios::binary);
@@ -113,5 +114,8 @@ int main() {
     for (auto& f : futures) f.get();
 
     cout << "Procesamiento completo.\n";
+    
+    uintmax_t n = fs::remove_all("Temp");
+
     return 0;
 }
